@@ -17,11 +17,11 @@ maps.n["<leader>as"] = { function() vim.api.nvim_command("cs find s " .. vim.fn.
 maps.n["<leader>at"] = { function() vim.api.nvim_command("cs find t " .. vim.fn.expand("<cword>")) end , desc = "Find this text string" }
 
 -- set plugin "ojroques/nvim-osc52"
-require('osc52').setup {
-  max_length = 0,      -- Maximum length of selection (0 for no limit)
-  silent     = false,  -- Disable message on successful copy
-  trim       = false,  -- Trim surrounding whitespaces before copy
-}
+-- require('osc52').setup {
+--   max_length = 0,      -- Maximum length of selection (0 for no limit)
+--   silent     = false,  -- Disable message on successful copy
+--   trim       = false,  -- Trim surrounding whitespaces before copy
+-- }
 
 -- I don't know why it not work :<
 -- maps.n[";c"] = { '<cmd>"+y<cr>', desc = "Copy content to system clipboard" }
@@ -29,25 +29,25 @@ require('osc52').setup {
 -- maps.v[";c"] = { '<cmd>"+y<cr>', desc = "Copy content to system clipboard" }
 -- maps.v[";cc"] = { '<cmd>"+yy<cr>', desc = "Copy content to system clipboard" }
 
-vim.keymap.set('n', ';c', '"+y')
-vim.keymap.set('n', ';cc', '"+yy')
-vim.keymap.set('v', ';c', '"+y')
-vim.keymap.set('v', ';cc', '"+yy')
+-- vim.keymap.set('n', ';c', '"+y')
+-- vim.keymap.set('n', ';cc', '"+yy')
+-- vim.keymap.set('v', ';c', '"+y')
+-- vim.keymap.set('v', ';cc', '"+yy')
 
 
-local function copy(lines, _)
-  require('osc52').copy(table.concat(lines, '\n'))
-end
+-- local function copy(lines, _)
+  -- require('osc52').copy(table.concat(lines, '\n'))
+-- end
 
-local function paste()
-  return {vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('')}
-end
+-- local function paste()
+  -- return {vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('')}
+-- end
 
-vim.g.clipboard = {
-  name = 'osc52',
-  copy = {['+'] = copy, ['*'] = copy},
-  paste = {['+'] = paste, ['*'] = paste},
-}
+-- vim.g.clipboard = {
+  -- name = 'osc52',
+  -- copy = {['+'] = copy, ['*'] = copy},
+  -- paste = {['+'] = paste, ['*'] = paste},
+-- }
 
 
 return maps;
